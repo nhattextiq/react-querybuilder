@@ -137,11 +137,11 @@ export default class QueryBuilder extends React.Component {
   componentWillReceiveProps(nextProps) {
     let schema = { ...this.state.schema };
 
-    if (this.props.query !== nextProps.query) {
+    if (JSON.stringify(this.props.query) !== JSON.stringify(nextProps.query)) {
       this.setState({ root: this.generateValidQuery(nextProps.query) });
     }
 
-    if (schema.fields !== nextProps.fields) {
+    if (JSON.stringify(schema.fields) !== JSON.stringify(nextProps.fields)) {
       schema.fields = nextProps.fields;
       this.setState({ schema });
     }
